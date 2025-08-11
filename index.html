@@ -1,0 +1,54 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Star Wars</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Acme&family=Handlee&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <div id="app">
+
+        <div class="top">
+            <div>
+                <h1>{{title}}</h1>
+                <small>Olá, <span id="userName"></span></small>
+            </div>
+            <form>
+                <input placeholder="Busca por nome" v-model="searchName" />
+                <button type="button" @click="search()">Buscar</button>
+                <div v-if="buscaSemResultados">
+                    <p>Nenhum personagem encontrado!</p>
+                </div>
+            </form>
+
+        </div>
+
+
+
+
+        <div class="characters">
+            <div class="item" v-for="item of characters">
+                <img :src="item.avatar" :alt="item.nome">
+                <div>{{item.nome}}</div>
+                <span @click="like(item.nome)" class="like material-symbols-outlined">
+                    thumb_up
+                </span>
+                <span @click="remove(item.id)" class="delete material-symbols-outlined">
+                    delete
+                </span>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/vue.js"></script>
+    <script type="text/javascript" src="js/app.js"></script>
+
+</body>
+
+</html>
